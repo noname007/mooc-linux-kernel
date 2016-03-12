@@ -8,5 +8,6 @@
    up something else. */
 
 extern asmlinkage void __init start_kernel(void);
+extern void __init my_start_kernel(void);
 
 #endif /* _LINUX_START_KERNEL_H */

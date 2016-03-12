@@ -13,6 +13,7 @@
 #include <linux/interrupt.h>
 #include <linux/i8253.h>
 #include <linux/time.h>
+#include <linux/timer.h>
 #include <linux/export.h>
 
 #include <asm/vsyscall.h>
@@ -57,6 +58,7 @@ EXPORT_SYMBOL(profile_pc);
 static irqreturn_t timer_interrupt(int irq, void *dev_id)
 {
 	global_clock_event->event_handler(global_clock_event);
+    my_timer_handler();
 	return IRQ_HANDLED;
 }
 
@@ -68,6 +70,7 @@ static struct irqaction irq0  = {
 
 void __init setup_default_timer_irq(void)
 {
+    printk(KERN_NOTICE "timer interrupt setup\n"); 
 	setup_irq(0, &irq0);
 }
 

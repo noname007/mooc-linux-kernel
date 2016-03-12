@@ -574,7 +574,6 @@ asmlinkage void __init start_kernel(void)
 	console_init();
 	if (panic_later)
 		panic(panic_later, panic_param);
-
 	lockdep_info();
 
 	/*
@@ -641,6 +640,7 @@ asmlinkage void __init start_kernel(void)
 
 	ftrace_init();
 
+    my_start_kernel();
 	/* Do the rest non-__init'ed, we're now alive */
 	rest_init();
 }
